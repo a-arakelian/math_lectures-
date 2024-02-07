@@ -1,0 +1,41 @@
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.pdf
+
+# TeXstudio
+*.cwl
+*.dvi
+*.idx
+*.lof
+*.lot
+*.nav
+*.snm
+*.syntex.gz
+*.vrb
+*.xdy
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*.pyc
+.venv
+
+# VS Code
+.vscode/
+
+# Drowings
+*.svg
+
+# Matplotlib
+
+
+
+

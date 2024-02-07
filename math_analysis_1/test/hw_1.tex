@@ -1,0 +1,73 @@
+% %-նշանից հետո գրվածը մեկնաբանություններ են
+\documentclass{article}
+
+% լուսանցքի սահմանում
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1.2cm,bindingoffset=0cm]{geometry}
+
+% հայերեն տեքստի հետ աշխատելու համար
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+
+% լրացուցիչ աշխատանք մաթեմատիկայի հետ
+\usepackage{amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{icomma} % "խելացի" ստորակե, $0,2$ --- թիվ, $0, 2$ --- թվարկում
+\usepackage{mathrsfs} % Սիրուն տառատեսակ
+
+% հիպերհղում
+\usepackage[hidelinks, colorlinks=true,linkcolor=blue]{hyperref}
+
+% բանաձևերի (չ)համարակալում
+\mathtoolsset{showonlyrefs=true} % Ցույց տալ բանաձևների միայն այն համարները, որոնց տեքստում կա \eqref{} (հղում)
+
+% գույների և այլ գրաֆիկական ձևափոխությունների համար    
+\usepackage{xcolor}    
+\usepackage{blindtext}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz} 
+
+
+\begin{document}
+
+% \begin{tcolorbox}[width=\textwidth, colback={white}, colframe=teal]    
+% Շրջանակների մեջ կարելի է վերցնել tcolorbox կարգավորման միջոցով, իսկ xcolor փաթեթը թույլ է տալիս գույների լայն ընտրություն։
+% \end{tcolorbox}
+
+% \begin{tcolorbox}[width=\textwidth, colback={white}, colframe=orange]
+%    graphicx և tikz փաթեթները հնարավորություն են տալիս ստեղծել շատ տարբեր հավես պատկերներ և գծագրեր, ստորև նայենք օրինակներ։
+% \end{tcolorbox}
+Դաս $1$\\
+\vspace{2cm}
+
+
+\begin{enumerate}
+    \item Դիցուք Հայկը իր $50000$ դրամը ներդրել է ավանդ տարեկան $10\%$ տոկոսադրույքով։
+    \begin{itemize}
+        \item Քանի՞ տարի հետո Հայկի գումարը կգերազանցի $100000$ դրամը։\\
+        \item Քանի՞ տարի հետո Հայկի գումարը կգերազանցի $200000$ դրամը:
+    \end{itemize}
+    \item Հետազոտել հետևյալ հաջորդականությունները և բազմություները սահմանափակության համար։
+    \begin{itemize}
+        \item $\left(\frac{n^3}{2-n^2}\right)$,\\
+        \item $\left(\frac{n^3}{2-n^2} - n\right)$,\\
+        \item $\left(\frac{1}{n \sin{n}}\right)$,\\
+        \item $(a_n)$, որտեղ $a_n = \left(1+\frac{1}{n}\right)^n$,\\
+        \item $f((0, 10))$, որտեղ $f: \mathbb{R} \setminus \{0\} \rightarrow \mathbb{R}$,\\
+        \item $(a_n)$, որտեղ $a_n = \sum_{k=1}^n\frac{1}{4k^2 + 1}$,\\
+        \item $(a_n)$, որտեղ $a_n = \sum_{k=1}^n\frac{1}{k} - \ln{n}$ \textcolor{gray}{[օգտագերծիր մաթեմատիկական ինդուկցիայի մեթոդը]}\\
+        \item $(\sqrt[n]{n!})$,\\
+        \item պարզ թվերի բազմությունը:
+    \end{itemize}
+    \item Հետազոտել հետևյալ հաջորդականությունները ֆունդամենտալության համար։
+    \begin{itemize}
+        \item $\left(n\right)$,\\
+        \item $\left(\frac{1}{n}\right)$,\\
+        \item դիցուք $(a_n)$ հաջորդականությունը այնպիսին է, որ
+        \[\forall \varepsilon > 0 \; \exists N_\varepsilon \in \mathbb{N}: \; \forall n > N_\varepsilon \; |a_n| < \varepsilon:\]
+        \item $\left(\sqrt[n]{n}\right)$:
+    \end{itemize}
+\end{enumerate}
+
+\end{document}
