@@ -36,6 +36,26 @@ def preimage(xy, y_range):
     return x_range_list
 
 
+def image(xy, x_range, continues):
+    xy = np.array(xy)
+    x_range = np.array(x_range)
+    x_range.sort()
+    filtered_xy = xy[(xy[:, 0] >= x_range[0]) & (xy[:, 0] <= x_range[1])]
+    filtered_xy = filtered_xy[filtered_xy[:, 1].argsort()] # sorted with y
+    if continues:
+        y_range_list = [[filtered_xy[0, 1], filtered_xy[-1, 1]]]
+    else:
+        y_range_list = [[filtered_xy[0, 1], filtered_xy[0, 1]]]
+        e = 1.5 * (xy[1][0] - xy[0][0]) # epsilon TODO
+        for cord in filtered_xy:
+            last_uplimit = y_range_list[-1][1]
+            if abs(last_uplimit - cord[1]) < e:
+                y_range_list[-1][1] = cord[1]
+            else:
+                y_range_list.append([cord[1], cord[1]])
+    return y_range_list
+
+
 def yset_box(y_range, x_width, color='red', opacity=0.6):
     y_range = np.array(y_range)
     y_range.sort()
@@ -68,6 +88,56 @@ def xset_box(x_range, y_width, color='gold', opacity=0.9):
     return box
 
 
+def configure_axis(ax, x_range, y_range, xlabel='$x$', ylabel='$f(x)$'):
+    # Move the left and bottom spines to x = 0 and y = 0, respectively.
+    ax.spines[["left", "bottom"]].set_position(("data", 0))
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.plot(1, 0, ">k", transform=ax.get_yaxis_transform(), clip_on=False)
+    ax.plot(0, 1, "^k", transform=ax.get_xaxis_transform(), clip_on=False)
+    ax.set_xlim(x_range)
+    ax.set_ylim(y_range)
+    ax.text(-0.25, 0.95, ylabel, transform=ax.get_xaxis_transform(), fontsize=16)
+    ax.text(0.95, -0.25, xlabel, transform=ax.get_yaxis_transform(), fontsize=16)
+    ax.set_yticks([])
+    ax.set_xticks([])
+
+
+def add_axspan_list(ax, range_list, set_range, axis_range, color='gold', axis='x'):
+    x_axis = set(('x', 'X', 'h', 'H'))
+    y_axis = set(('y', 'Y', 'v', 'V'))
+    if axis not in x_axis and axis not in y_axis:
+        raise ValueError('invalid axis, chose "x" or "y"')
+    axspan = ax.axvspan if axis in x_axis else ax.axhspan
+    set_ticks = ax.set_xticks if axis in x_axis else ax.set_yticks
+    set_ticklabels = ax.set_xticklabels if axis in x_axis else ax.set_yticklabels
+    set_box = xset_box if axis in x_axis else yset_box
+    label = '$x_{' if axis in x_axis else '$y_{'
+    ticks = [cord for interval in range_list for cord in interval]
+    set_min = set_range.min()
+    set_max = set_range.max()
+    ru = axis_range[1]
+    ld = axis_range[0]
+    for interval in range_list:
+        mid_point = (interval[0] + interval[1])/2
+        x_ru, x_ld = (mid_point, mid_point) if axis in x_axis else (ru/4, ld/4)
+        y_ru, y_ld = (mid_point, mid_point) if axis in y_axis else (ru/4, ld/4)
+        dx, dy = (0, -0.2) if axis in x_axis else (-0.2, 0)
+        # arrows
+        arrow_ru = patches.Arrow(x_ld, y_ld, dx, dy, width=.3, facecolor=color, alpha=0.6)
+        arrow_ld = patches.Arrow(x_ru, y_ru, dx, dy, width=.3, facecolor=color, alpha=0.6)
+        if set_min * set_max < 0:
+            ax.add_patch(arrow_ld)
+            ax.add_patch(arrow_ru)
+        elif set_max <= 0:
+            ax.add_patch(arrow_ru)
+        else:
+            ax.add_patch(arrow_ld)
+        axspan(interval[0], interval[1], facecolor=color, alpha=0.3)
+        ax.add_patch(set_box(interval, ru - ld))
+    set_ticks(ticks)
+    set_ticklabels([label+f'{i}'+'}$' for i in range(1, len(ticks) + 1)], fontsize=12)
+
+
 def func_preimage_plot(func, x_range, yset):
     x = np.linspace(x_range[0], x_range[1], 5000)
     y = func(x)
@@ -77,18 +147,8 @@ def func_preimage_plot(func, x_range, yset):
     preimage_list = preimage(xy, yset)
     # Create a figure and axis
     fig, ax = plt.subplots()
-    # Move the left and bottom spines to x = 0 and y = 0, respectively.
-    ax.spines[["left", "bottom"]].set_position(("data", 0))
-    ax.spines[["top", "right"]].set_visible(False)
-    ax.plot(1, 0, ">k", transform=ax.get_yaxis_transform(), clip_on=False)
-    ax.plot(0, 1, "^k", transform=ax.get_xaxis_transform(), clip_on=False)
     y_range = (y.min(), y.max())
-    ax.set_xlim(x_range)
-    ax.set_ylim(y_range)
-    ax.text(-0.25, 0.95, '$f(x)$', transform=ax.get_xaxis_transform(), fontsize=16)
-    ax.text(0.95, -0.25, '$x$', transform=ax.get_yaxis_transform(), fontsize=16)
-    ax.set_yticks([])
-    ax.set_xticks([])
+    configure_axis(ax, x_range, y_range)
     # Create plot
     ax.plot(x, y, label='$f(x)$')
     save_plot('func_preimage_plot_0') # mod 0
@@ -104,35 +164,40 @@ def func_preimage_plot(func, x_range, yset):
         patches.Arrow(x_range[1]/8, (yset[0] + yset[1])/2, 0.2, 0, width=.3, facecolor='red', alpha=0.6)
     )
     save_plot('func_preimage_plot_2') # mod 2
-    xticks = [cord for interval in preimage_list for cord in interval]
-    for interval in preimage_list:
-        mid_point = (interval[0] + interval)[1]/2
-        # x arrows
-        ymin = yset.min()
-        ymax = yset.max()
-        xarrow_down = patches.Arrow(mid_point, y_range[1]/4, 0, -0.2, width=.3, facecolor='gold', alpha=0.6)
-        xarrow_up = patches.Arrow(mid_point, y_range[0]/4, 0, 0.2, width=.3, facecolor='gold', alpha=0.6)
-        if ymin * ymax < 0:
-            ax.add_patch(xarrow_down)
-            ax.add_patch(xarrow_up)
-        elif ymax <= 0:
-            ax.add_patch(xarrow_up)
-        else:
-            ax.add_patch(xarrow_down)
-        xticks.append(interval[0])
-        xticks.append(interval[1])
-        ax.axvspan(interval[0], interval[1], facecolor='gold', alpha=0.3)
-        ax.add_patch(xset_box(interval, y_range[1] - y_range[0]))
-    ax.set_xticks(xticks)
-    ax.set_xticklabels(['$x_{'+f'{i}'+'}$' for i in range(1, len(xticks) + 1)], fontsize=12) # mod 3
-    ax.add_patch(
-        patches.Arrow(-x_range[1]/8, (yset[0] + yset[1])/2, -0.2, 0, width=.3, facecolor='red', alpha=0.3)
-    )
-    ax.add_patch(
-        patches.Arrow(x_range[1]/8, (yset[0] + yset[1])/2, 0.2, 0, width=.3, facecolor='red', alpha=0.3)
-    )
+    add_axspan_list(ax, preimage_list, yset, y_range, 'gold', 'x')
     save_plot('func_preimage_plot_3') # mod 3
 
 
+def func_image_plot(func, x_range, xset, continues=True):
+    x = np.linspace(x_range[0], x_range[1], 5000)
+    y = func(x)
+    xy = np.column_stack((x, y))
+    xset = np.array(xset)
+    xset.sort()
+    image_list = image(xy, xset, continues)
+    # Create a figure and axis
+    fig, ax = plt.subplots()
+    y_range = (y.min(), y.max())
+    configure_axis(ax, x_range, y_range)
+    # Create plot
+    ax.plot(x, y, label='$f(x)$')
+    save_plot('func_image_plot_0') # mod 0
+    ax.add_patch(xset_box(xset, y_range[1] - y_range[0]))
+    ax.set_xticks(xset)
+    ax.set_xticklabels(['$x_1$', '$x_2$'], fontsize=12)
+    save_plot('func_image_plot_1') # mod 1
+    ax.axvspan(xset[0], xset[1], facecolor='gold', alpha=0.3)
+    ax.add_patch(
+        patches.Arrow((xset[0] + xset[1])/2, y_range[1]/4, 0, 0.2, width=.3, facecolor='gold', alpha=0.6)
+    )
+    ax.add_patch(
+        patches.Arrow((xset[0] + xset[1])/2, y_range[0]/4, 0, -0.2, width=.3, facecolor='gold', alpha=0.6)
+    )
+    save_plot('func_image_plot_2') # mod 2
+    add_axspan_list(ax, image_list, xset, x_range, 'red', 'y')
+    save_plot('func_image_plot_3') # mod 3
+
 func_preimage_plot(func, (-1, 1), (0.3, 0.7))
 #plt.show()
+func_image_plot(func, (-1, 1), (0.3, 0.7))
+# plt.show()
