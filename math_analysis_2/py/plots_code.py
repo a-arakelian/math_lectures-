@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from mpl_toolkits.axes_grid1.inset_locator import (BboxConnector,
+                                                   BboxPatch)
+from matplotlib.transforms import (Bbox, TransformedBbox)
 import os
 
 IGNOREDDIRECTORY = '5b49576b'
@@ -197,7 +200,152 @@ def func_image_plot(func, x_range, xset, continues=True):
     add_axspan_list(ax, image_list, xset, x_range, 'red', 'y')
     save_plot('func_image_plot_3') # mod 3
 
+
+def span(xmin, xmax, ax, color='red', alpha=0.5, add=True):
+    bbox = Bbox([[xmin, 0], [xmax, 1]])
+    tr_bbox = TransformedBbox(bbox, ax.get_xaxis_transform())
+    vspan = BboxPatch(tr_bbox, alpha=alpha, facecolor=color)
+    if add:
+        ax.add_patch(vspan)
+    return vspan, tr_bbox
+
+
+def nested_intervals(interval_list):
+    fig, ax = plt.subplots(figsize=(10, 1))
+    ax.spines[["bottom"]].set_position(("data", 0))
+    ax.spines[["left", "right", "top"]].set_visible(False)
+    ax.plot(1, ax.get_ylim()[0], ">k", transform=ax.get_yaxis_transform(), clip_on=False)
+    ax.set_yticks([])
+    ax.set_xticks([])
+    for n, interval in enumerate(interval_list, 2):
+        xlabels = [t+f'{i}'+'}$' for i in range(1, n) for t in ['$a_{', '$b_{']]
+        xticks = [x for inter in interval_list[:n-1] for x in inter]
+        k = 2 * (n-1) if n < 5 else 6
+        ax.set_xticks(xticks[:k])
+        ax.set_xticklabels(xlabels[:k])
+        if n % 2 == 0:
+            color='blue'
+            alpha=0.2
+        else:
+            color='red'
+            alpha=0.2
+        span(interval[0], interval[1], ax, color, alpha)
+        if len(interval_list) > 2:
+            interval_list[-2]
+        save_plot(f'nested_intervals_{n-1}') # mod n-1
+
+def make_sift():
+    a = [0]
+    def n_to_r(n):
+        n += a[0]
+        i = 3
+        while n / i >= 1:
+            i *= 3
+        if n % 3 == 0:
+            n += 1
+            a[0] += 1
+        return float(n)/i
+    return n_to_r
+
+
+n_to_r = make_sift()
+
+
+def cut_to_3(a, b):
+    delta = float(b - a) / 3
+    a1, b1 = a, a + delta
+    a2, b2 = b1, b1 + delta
+    a3, b3 = b2, b
+    bbox_1 = Bbox([[a1, 0], [b1, 1]])
+    bbox_2 = Bbox([[a2, 0], [b2, 1]])
+    bbox_3 = Bbox([[a3, 0], [b3, 1]])
+    return bbox_1, bbox_2, bbox_3, a2, a3
+
+
+def transformbboxes(*args, ax):
+    for arg in args:
+        yield TransformedBbox(arg, ax.get_xaxis_transform())
+
+
+def label(char, i):
+    return f'${char}' + '_{' + f'{i}' + '}$'
+
+
+
+def nested_intervals_special(n):
+    axs = plt.figure(figsize=(10, 1)).subplot_mosaic([["zoom"], ["main"]])
+    main_ax = axs["main"]
+    zoom_ax = axs["zoom"]
+    for ax in (main_ax, zoom_ax):
+        ax.spines[["bottom"]].set_position(("data", 0))
+        ax.spines[["left", "right", "top"]].set_visible(False)
+        ax.plot(1, ax.get_ylim()[0], ">k", transform=ax.get_yaxis_transform(), clip_on=False)
+        ax.set_yticks([])
+        ax.set_xticks([])
+    vspan_main_list = []
+    vspan_zoom_list = []
+    aconnector_list = []
+    bconnector_list = []
+    a = 0
+    b = 1
+    for i in range(1, n+1):
+        color, alpha = ('blue', 0.2) if i % 2 == 0 else ('red', 0.2)
+        bbox_0 = Bbox([[a, 0], [b, 1]])
+        main_tr_box_0 = TransformedBbox(bbox_0, main_ax.get_xaxis_transform())
+        zoom_tr_box_0 = TransformedBbox(bbox_0, zoom_ax.get_xaxis_transform())
+        bbox_1, bbox_2, bbox_3, a2, a3 = cut_to_3(a, b)
+        main_tr_bbox_list = [tr for tr in transformbboxes(bbox_1, bbox_2, bbox_3, ax=main_ax)]
+        zoom_tr_bbox_list = [tr for tr in transformbboxes(bbox_1, bbox_2, bbox_3, ax=zoom_ax)]
+        vspan_main_list.append(main_tr_box_0)
+        vspan_zoom_list.append(zoom_tr_box_0)
+        main_ax.add_patch(BboxPatch(main_tr_box_0, alpha=alpha, facecolor=color))
+        zoom_ax.add_patch(BboxPatch(zoom_tr_box_0, alpha=alpha, facecolor=color))
+        c1 = BboxConnector(main_tr_box_0, zoom_tr_box_0, loc1=2, loc2=3, clip_on=False)
+        c2 = BboxConnector(main_tr_box_0, zoom_tr_box_0, loc1=1, loc2=4, clip_on=False)
+        for acon, bcon in zip(aconnector_list, bconnector_list):
+            acon.set_visible(False)
+            bcon.set_visible(False)
+        aconnector_list.append(c1)
+        bconnector_list.append(c2)
+        zoom_ax.add_patch(c1)
+        zoom_ax.add_patch(c2)
+        x = n_to_r(i)
+        main_ax.set_xticks([a, b, x])
+        zoom_ax.set_xticks([a, b, x])
+        main_ax.set_xticklabels([label('a', i), label('b', i), f'$f({i})$'])
+        zoom_ax.set_xticklabels([label('a', i), label('b', i), f'$f({i})$'])
+        zoom_ax.set_xlim(a - (b-a)/10, b + (b-a)/10)
+        save_plot(f'nested_intervals_special_{i}') # mod 1
+        if x < a or x > a2:
+            bbox_i = 0
+            a, b = a, a2
+        elif x < a2 or x > a3:
+            bbox_i = 1
+            a, b = a2, a3
+        elif x < a3 or x > b:
+            bbox_i = 2
+            a, b = a3, b
+        main_box = [BboxPatch(cut3, facecolor=color, alpha=0.75) for cut3, color in zip(main_tr_bbox_list, ('#CDFAD5', '#F6FDC3', '#FFCF96'))]
+        zoom_box = [BboxPatch(cut3, facecolor=color, alpha=0.75) for cut3, color in zip(zoom_tr_bbox_list, ('#CDFAD5', '#F6FDC3', '#FFCF96'))]
+        for mbox, zbox in zip(main_box, zoom_box):
+            main_ax.add_patch(mbox)
+            zoom_ax.add_patch(zbox)
+        save_plot(f'nested_intervals_special_cut3_{i}') # mod 2
+        for mbox, zbox in zip(main_box, zoom_box):
+            mbox.set_visible(False)
+            zbox.set_visible(False)
+        ch_tr_mbbox = BboxPatch(main_tr_bbox_list[bbox_i], facecolor='#9BCF53', alpha=0.85)
+        ch_tr_zbbox = BboxPatch(zoom_tr_bbox_list[bbox_i], facecolor='#9BCF53', alpha=0.85)
+        main_ax.add_patch(ch_tr_mbbox)
+        zoom_ax.add_patch(ch_tr_zbbox)
+        save_plot(f'nested_intervals_special_check_{i}') # mod 3
+        ch_tr_mbbox.set_visible(False)
+        ch_tr_zbbox.set_visible(False)
+
+
 func_preimage_plot(func, (-1, 1), (0.3, 0.7))
 #plt.show()
 func_image_plot(func, (-1, 1), (0.3, 0.7))
 # plt.show()
+nested_intervals_special(10)
+plt.show()

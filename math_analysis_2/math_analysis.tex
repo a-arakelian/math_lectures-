@@ -452,21 +452,157 @@
             \end{alertblock}
         }
     \end{frame}
-    % \begin{frame}
-    %     \frametitle{իրական թվերը անհաշվելի են}
-    %     \only<1->{
-    %         \begin{block}{Սահմանում}
-    %             $A$ բազմությունը \alert<1, 4>{հաշվելի} է, \only<-2>{\st<2>{եթե նրա տարրերը կարելի է համարակալել, բնական թվերով:}}
-    %             \only<3->{եթե $A$ և $\mathbb{N}$ բազմություննեի միջև գոյություն ունի \alert<4>{փոխմիարժեք արտապատկերում}։}
-    %         \begin{block}
-    %     }
-    %     \only<5->{
-    %         \begin{block}{Սահմանում}
-    %             $f:A \rightarrow B$ արտապատկերումը \alert<4>{փոխմիարժեք} է, եթե կամայական $b \in B$ տարրի \alert<4>{նախապատկերում} կա մեկ տարր
-    %             \[f^{-1}(\{b\}) := \{a\in A: \; f(a) \in \{b\}\}\]։
-    %         \begin{block}
-    %     }
-        
-    % \end{frame}
+
+    \begin{frame}
+        \frametitle{Անընդհատության աքսիոմի հետևանքները}
+        \framesubtitle{Ճշգրիտ վերին եզր}
+        \only<1->{
+            \begin{block}{Պնդում}
+                Կամայական \alert<2>{վերևից սահմանափակ} իրական թվերի ենթաբզմություն ունի \alert<6>{ճշգրիտ \alert<5>{վերին եզր}}։
+            \end{block}
+        }
+        \only<3-5>{
+            \begin{block}{Սահմանում}
+                Բազմությունը \alert<3>{վերևից սահմանափակ} է, եթե գոյություն ունի այնպիսի թիվ, որ բազմության բոլոր թվերից մեծ կամ հավասար է։
+            \only<4->{\[A \subset \mathbb{R} \text{ վերևից սահմանափակ է, եթե } \exists M \in \mathbb{R}: \; \forall a \in A \; a \leq M\]}
+            \only<5->{$M$ թիվը կոչվում է \alert<5>{վերի եզր}}
+            \end{block}
+        }
+        \only<6-13>{
+            \begin{block}{Սահմանում}
+                Բազմության \alert<6>{ճշգրիտ վերին եզր} է կոչվում, վերին եզրերից փոքրագույնը։\\
+                \only<7->{
+                    Եթե $S$-ը $A$ բազմության ճշգրիտ վերին եզրն է, ապա՝
+                    \only<8->{\begin{itemize}
+                        \only<8->{\item{$S$-ը վերին եզր է $A$ բազմության համար\\}}
+                        \only<9->{$\forall a \in A \leq S$}
+                        \only<10->{\item{\alert<13>{$S$-ից փոքր կամայական թիվ} $A$ բազմության համար վերին եզր չէ\\}}
+                        \only<11>{$\forall s < S\;  \exists a_s  \in A\; a > s$}
+                        \only<12>{$\forall s < S\;  \exists a_s  \in A\; a > s = S - \varepsilon$}
+                        \only<13->{$\alert<13>{\forall \varepsilon > 0}\;  \exists a_s  \in A\; a > \alert<13>{S - \varepsilon}$}
+                    \end{itemize}}
+                }
+            \end{block}
+        }
+        \only<14->{
+            \begin{alertblock}{Ապացույց}
+                \only<15-27>{Եթե $A$, և $B$ բազմությունները այնպիսին են, որ }
+                \only<16-18>{\[\forall a \in A, \; \forall b \in B: \; a \leq b\]}
+                \only<19-27>{\alert<26>{$\forall a \in A, \; \forall b \in B: \; a \leq b$}, }
+                \only<17-27>{ապա}
+                \only<18-21, 26-27>{\alert<27>{\[\exists \xi \in \mathbb{R}:\; \forall a \in A, \; \forall b \in B: \; a \leq \xi \leq b\]}}
+                \only<22-25>{$\exists \xi \in \mathbb{R}:\; \forall a \in A, \; \forall b \in B: \; a \leq \xi \leq b$\\}
+                \only<20->{Դիցուք $A$-ն վերևից սահմանափակ բազմություն է։\\}
+                \only<21->{$B$-ով նշանակենք $A$-ին վերևից սահմանափակող թվերի բազմությունը։\\}
+                \only<26-27>{$b \in B$ նշանակում է $b$-ն վերևից սահմանափակում է $A$ բազմությանը։\\}
+                \only<28->{Համաձայն անընդհատության աքսիոմի․ \[\exists \xi \in \mathbb{R}:\; \alert<29>{\forall a \in A}, \; \alert<30>{\forall b \in B}: \; \alert<29>{a \leq} \alert<29-30>{\xi} \alert<30>{\leq b}\]}
+                \only<29-30>{$\xi$-ն վերևից սահմանափակում է $A$ բազմությանը, $\xi \in B$։\\}
+                \only<30>{$\xi$-ն վերին եզրերից փոքրագույնն է։\\}
+                \only<31>{$\xi$-ն $A$ բազմության ճշգրիտ վերին եզրն է։\\}
+            \end{alertblock}
+            \only<22-25>{
+                \begin{exampleblock}{Օրինակ}
+                    $A = \{x\in \mathbb{R}:\; -1 < x < \pi\} =: (-1, \pi)$\\
+                    \only<23>{$B = \{x \in \mathbb{R}:\; x \text{-ը վերևից սահմանափակում է } A \text{ բազմությունը}\}$}
+                    \only<24>{$B = \{x \in \mathbb{R}: \; x\geq\pi\}$}
+                    \only<25>{$B = [\pi, +\infty) =: [\pi, +\infty) $}
+                \end{exampleblock}
+            }
+        }
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Անընդհատության աքսիոմի հետևանքները}
+        \framesubtitle{Ներդրված հատվածնրի լեմմ}
+        \only<1->{
+            \begin{block}{Պնդում}
+                Կամայական ներդրված \alert<8>{ոչ դատարկ} հատվածների հաջորդականություն համար, \only<-13>{\[\forall n \in \mathbb{N}: \; [a_{n+1}, b_{n+1}]\subset[a_n, b_n]\]} գոյություն ունի այնպիսի $c \in \mathbb{R}$ թիվ, որ պատկնում է բոլոր հատվածներին, այսինքն՝ \[\forall n \in \mathbb{N}\; c \in [a_n, b_n]:\]
+            \end{block}
+            \centering{
+            \only<2>{\includegraphics[width=0.7\textwidth]{5b49576b/nested_intervals_1.png}}
+            \only<3>{\includegraphics[width=0.7\textwidth]{5b49576b/nested_intervals_2.png}}
+            \only<4>{\includegraphics[width=0.7\textwidth]{5b49576b/nested_intervals_3.png}}
+            \only<5>{\includegraphics[width=0.7\textwidth]{5b49576b/nested_intervals_4.png}}
+            \only<6>{\includegraphics[width=0.7\textwidth]{5b49576b/nested_intervals_5.png}}}
+        }
+        \only<7->{
+            \begin{alertblock}{Ապացույց}
+                \only<7-9>{Հիշենք, որ $[a_n, b_n] = \{x \in \mathbb{R}: \; a_n \leq x \leq b_n \}$:}
+                \only<8>{\[a_n \leq b_n\]}
+                \only<9>{\[\forall n \in \mathbb{N}: \; a_n \leq b_n\]}
+                \only<10-13>{
+                    Նկատենք, որ $[a_{n+1}, b_{n+1}]\subset[a_n, b_n]$ Նշանակում է
+                    \only<11>{\[a_n \leq a_{n+1} \alert{\leq} b_{n+1} \leq b_{n}\]}
+                    \only<12>{\[a_n \leq a_{n+1} \leq a_{n+2} \alert{\leq} b_{n+2} \leq b_{n+1} \leq b_{n}\]}
+                    \only<13>{\[a_n \leq a_{n+1} \leq a_{n+2} \leq \cdots \leq a_{n+p} \alert{\leq} b_{n+p} \leq \cdots \leq b_{n+2} \leq b_{n+1} \leq b_{n}\]}
+                }
+                \only<14->{
+                    \[a_1 \leq a_{2} \leq a_{3} \leq \cdots \leq a_{n} \leq \cdots \alert{\leq} \cdots \leq b_{n} \leq \cdots \leq b_{3} \leq b_{2} \leq b_{1}\]
+                    \only<14->{$A := \{a_1, a_2, ...\}$-հատվածների ձախ ծայրակետերը։\\}
+                    \only<15->{$B := \{b_1, b_2, ...\}$-հատվածների աջ ծայրակետերը։\\}
+                    \only<16->{Քանի որ $\forall a \in A, b \in B: \; a \leq b$\only<17->{,} }
+                    \only<17>{համաձայն անընդհատության աքսիոմի \[\exists \xi \in \mathbb{R}: \; \forall a \in A, b \in B \; a \leq \xi \leq b\]}
+                    \only<18->{համաձայն անընդհատության աքսիոմի \[\exists \xi \in \mathbb{R}: \; \forall a \in A, b \in B \; \xi \in [a, b]\]}
+                    \only<19->{\[\forall n \in \mathbb \; \xi \in [a_n, b_n]\]}
+                }
+            \end{alertblock}
+        }
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Իրական թվերը անհաշվելի են}
+        \only<1-5, 13->{
+            \begin{block}{Սահմանում}
+                $A$ բազմությունը \alert<1, 4>{հաշվելի} է, \only<-2>{\alert<2>{եթե նրա տարրերը կարելի է համարակալե բնական թվերով:}}
+                \only<3->{եթե $A$ և $\mathbb{N}$ բազմություննեի միջև գոյություն ունի \alert<4>{փոխմիարժեք արտապատկերում}։}
+            \end{block}
+        }
+        \only<5-13>{
+            \begin{block}{Սահմանում}
+                $f:A \rightarrow B$ արտապատկերումը \alert<5>{փոխմիարժեք} է, եթե կամայական $b \in B$ տարրի \alert<6-9>{նախապատկերում} կա մեկ տարր\only<13>{։}
+                \only<-13>{\[f^{-1}(\{b\}) := \{a\in A: \; f(a) \in \{b\}\}:\]}
+                Այսինքն $f(x) = b$ ունի մեկ լուծում։
+            \end{block}
+        }
+        \only<6-12>{
+        \begin{columns}
+            \column{0.5\textwidth}
+            \only<6->{\[f: \mathbb{R} \rightarrow \mathbb{R}\]}
+            \only<7-8>{\[f^{-1}([y_1, y_2])\]}
+            \only<9>{\[f^{-1}([y_1, y_2]) = [x_1, x_2] \cup [x_3, x_4]\]}
+            \only<10->{Իսկ $[x_1, x_2]$ բազմության \alert{պատկեր} անվանում են՝}
+            \only<11>{\[f([x_1, x_2]) := \{f(x) \in \mathbb{R}: x \in [x_1, x_2]\}\]}
+            \only<12>{\[f([x_1, x_2]) = [y_1, y_2]\]}
+            \column{0.4\textwidth}
+            \only<6>{\includegraphics[width=0.95\textwidth]{5b49576b/func_preimage_plot_0.png}}
+            \only<7>{\includegraphics[width=0.95\textwidth]{5b49576b/func_preimage_plot_1.png}}
+            \only<8>{\includegraphics[width=0.95\textwidth]{5b49576b/func_preimage_plot_2.png}}
+            \only<9>{\includegraphics[width=0.95\textwidth]{5b49576b/func_preimage_plot_3.png}}
+            \only<10>{\includegraphics[width=0.95\textwidth]{5b49576b/func_image_plot_1.png}}
+            \only<11>{\includegraphics[width=0.95\textwidth]{5b49576b/func_image_plot_2.png}}
+            \only<12>{\includegraphics[width=0.95\textwidth]{5b49576b/func_image_plot_3.png}}
+        \end{columns}
+        }
+        \only<13->{
+            \begin{block}{Պնդում}
+                Իրական թվերի բազմությունը \alert<14>{անհաշվելի է}։ Կամայական $f: \mathbb{R} \rightarrow \mathbb{N}$ արտապատկերման համար կգտնվի այպիսի \alert<14>{$\xi \in \mathbb{R}$, որ $f(x) = \xi$ լուծում չունի}։
+            \end{block}
+        }
+        \only<14>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_1.png}}
+        \only<15>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_cut3_1.png}}
+        \only<16>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_check_1.png}}
+        \only<17>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_2.png}}
+        \only<18>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_cut3_2.png}}
+        \only<19>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_check_2.png}}
+        \only<20>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_3.png}}
+        \only<21>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_cut3_3.png}}
+        \only<22>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_check_3.png}}
+        \only<23>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_4.png}}
+        \only<24>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_cut3_4.png}}
+        \only<25>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_check_4.png}}
+        \only<26>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_5.png}}
+        \only<27>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_cut3_5.png}}
+        \only<28>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_check_5.png}}
+    \end{frame}
 
 \end{document}
