@@ -71,10 +71,25 @@
         \centering
         Շուտով․․․
     \end{frame}
+     %%%%%%%   բովանդականություն   %%%%%%%
     \begin{frame}
         \frametitle{Բովանդականություն}
-        \centering
-        Շուտով․․․
+        \begin{block}{}
+            Իրական թվերի սահմանումը
+            \begin{itemize}
+                \item{Կառուցողական սահմանումներ}
+                \item{Աքսիոմատիկ սահմանում}
+            \end{itemize}
+        \end{block}
+        \begin{block}{}
+            Իրական թվերի հատկությունները
+            \begin{itemize}
+                \item{Արամատ երկու, իռացիոնալ թվեր}
+                \item{Ճշգրիտ վերին եզրի գոյությունը}
+                \item{Ներդրված հատվածների լեմմ}
+                \item{Իրական թվերի անհաշվելիությունը}
+            \end{itemize}
+        \end{block}
     \end{frame}
     \begin{frame}
         \frametitle{Իրական թվեր}
@@ -366,7 +381,7 @@
         }
         \only<27->{
             \begin{exampleblock}{Օրինակ}
-                Դիցուք՝ \alert<41>{$A = \{q \in \mathbb{Q}: q^2 < 2 \text{ կամ } q < 0\}$} և $B = \{q \in \mathbb{Q}: q^2 \geq 2 \text{ և } q \geq 0\}$:\\
+                Դիցուք՝ \alert<41>{$A = \{q \in \mathbb{Q}: \alert<31>{q^2 < 2 \text{ կամ } q < 0}\}$} և $B = \{q \in \mathbb{Q}: q^2 \geq 2 \text{ և } \alert<30>{q \geq 0}\}$:\\
                 Չնայած նրա, որ \alert<29>{$\forall a \in A$ և $\forall b \in B$ ճիշտ է $a \leq b$}, \alert<38>{գոյություն չունի այնպիսի \alert<28>{$\xi \in \mathbb{Q}$}}, որ $\forall a \in A$ և $\forall b \in B$ տեղի ունենա
                 \only<27-28>{\[a \leq \xi \leq b\]} \only<29->{$a \leq \xi \leq b$}
                 անհավասարությունը։
@@ -410,16 +425,6 @@
                         \[2 \xi \delta + \delta^2 < (2\xi + 1)\delta \alert{\underbrace{<}_{\text{երբ } \delta < \frac{2-\xi^2}{2\xi + 1}}} 2 - \xi^2\]
                     }
                     \only<54>{Երբ $0<\delta < \min\left\{\frac{2-\xi^2}{2\xi + 1}, 1\right\}$, կունենանք որ $(\xi + \delta)^2 < 2$}
-                    
-                    % \only<46->{
-                    % \[
-                    %     2 \xi \delta + \delta^2  < 2 \xi \delta + \delta^2\\
-                    %     \text{երբ } \delta < 1 \; \delta^2 = \delta \cdot \delta < \delta\\
-                    %     2 \xi \delta + \delta^2 < 2 \xi \delta + \delta\\
-                    %     \text{երբ } 2 \xi \delta + \delta < 2 - \xi^2 \text{ և } 0 < \delta < 2\\
-                    %     2 \xi \delta + \delta^2 < 2 - \xi^2
-
-                    % \]}
                 }
             \end{alertblock}
         }
