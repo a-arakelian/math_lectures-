@@ -217,6 +217,8 @@ def nested_intervals(interval_list):
     ax.plot(1, ax.get_ylim()[0], ">k", transform=ax.get_yaxis_transform(), clip_on=False)
     ax.set_yticks([])
     ax.set_xticks([])
+    a, b = interval_list[0]
+    ax.set_xlim(a - (b-a)/20, b + (b-a)/20)
     for n, interval in enumerate(interval_list, 2):
         xlabels = [t+f'{i}'+'}$' for i in range(1, n) for t in ['$a_{', '$b_{']]
         xticks = [x for inter in interval_list[:n-1] for x in inter]
@@ -288,6 +290,7 @@ def nested_intervals_special(n):
     bconnector_list = []
     a = 0
     b = 1
+    main_ax.set_xlim(-0.1, 1.1)
     for i in range(1, n+1):
         color, alpha = ('blue', 0.2) if i % 2 == 0 else ('red', 0.2)
         bbox_0 = Bbox([[a, 0], [b, 1]])
@@ -314,7 +317,7 @@ def nested_intervals_special(n):
         zoom_ax.set_xticks([a, b, x])
         main_ax.set_xticklabels([label('a', i), label('b', i), f'$f({i})$'])
         zoom_ax.set_xticklabels([label('a', i), label('b', i), f'$f({i})$'])
-        zoom_ax.set_xlim(a - (b-a)/10, b + (b-a)/10)
+        zoom_ax.set_xlim(a - (b-a)/20, b + (b-a)/20)
         save_plot(f'nested_intervals_special_{i}') # mod 1
         if x < a or x > a2:
             bbox_i = 0
@@ -344,8 +347,7 @@ def nested_intervals_special(n):
 
 
 func_preimage_plot(func, (-1, 1), (0.3, 0.7))
-#plt.show()
 func_image_plot(func, (-1, 1), (0.3, 0.7))
-# plt.show()
+nested_intervals([[0, 1], [0.4, 0.8], [0.45, 0.55], [0.475, 0.5], [0.48, 0.5], [0.485, 0.495]])
 nested_intervals_special(10)
 plt.show()
