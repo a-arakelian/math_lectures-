@@ -66,11 +66,11 @@
         \titlepage
 	% \maketitle
     \end{frame}
-    \begin{frame}
-        \frametitle{Նախորդ դասին}
-        \centering
-        Շուտով․․․
-    \end{frame}
+    % \begin{frame}
+    %     \frametitle{Նախորդ դասին}
+    %     \centering
+    %     Շուտով․․․
+    % \end{frame}
      %%%%%%%   բովանդականություն   %%%%%%%
     \begin{frame}
         \frametitle{Բովանդականություն}
@@ -142,20 +142,20 @@
         \only<3-5>{
             \only<3->{\[a: \mathbb{N} \rightarrow \alert<3>{\mathbb{Q}}\]}
             \only<4->{\[\mathbb{Q} = \left\{\frac{m}{n}: \; m \in \mathbb{Z}, n \in \mathbb{N}\right\}\]}
-            % \only<5->{
-            %     \begin{center}
-            %         \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
-            %         % \setlength{\tabcolsep}{5pt} % Adjust horizontal spacing
-            %         \begin{matrix}
-            %             \frac{0}{1} & \frac{1}{1} & \frac{-1}{1} & \frac{2}{1} & \frac{-2}{1} & \frac{3}{1} & \frac{-3}{1} & \frac{4}{1} & \frac{-4}{1} & \dotsb \\
-            %             \frac{0}{2} & \frac{1}{2} & \frac{-1}{2} & \frac{2}{2} & \frac{-2}{2} & \frac{3}{2} & \frac{-3}{2} & \frac{4}{2} & \frac{-4}{2} & \dotsb \\
-            %             \frac{0}{3} & \frac{1}{3} & \frac{-1}{3} & \frac{2}{3} & \frac{-2}{3} & \frac{3}{3} & \frac{-3}{3} & \frac{4}{3} & \frac{-4}{3} & \dotsb \\
-            %             \frac{0}{4} & \frac{1}{4} & \frac{-1}{4} & \frac{2}{4} & \frac{-2}{4} & \frac{3}{4} & \frac{-3}{4} & \frac{4}{4} & \frac{-4}{4} & \dotsb \\
-            %             \frac{0}{5} & \frac{1}{5} & \frac{-1}{5} & \frac{2}{5} & \frac{-2}{5} & \frac{3}{5} & \frac{-3}{5} & \frac{4}{5} & \frac{-4}{5} & \dotsb \\
-            %             \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\
-            %         \end{matrix}
-            %     \end{center}
-            % }
+            \only<5->{
+                \begin{center}
+                    \renewcommand{\arraystretch}{1.5} % Adjust vertical spacing
+                    % \setlength{\tabcolsep}{5pt} % Adjust horizontal spacing
+                    \begin{matrix}
+                        \frac{0}{1} & \frac{1}{1} & \frac{-1}{1} & \frac{2}{1} & \frac{-2}{1} & \frac{3}{1} & \frac{-3}{1} & \frac{4}{1} & \frac{-4}{1} & \dotsb \\
+                        \frac{0}{2} & \frac{1}{2} & \frac{-1}{2} & \frac{2}{2} & \frac{-2}{2} & \frac{3}{2} & \frac{-3}{2} & \frac{4}{2} & \frac{-4}{2} & \dotsb \\
+                        \frac{0}{3} & \frac{1}{3} & \frac{-1}{3} & \frac{2}{3} & \frac{-2}{3} & \frac{3}{3} & \frac{-3}{3} & \frac{4}{3} & \frac{-4}{3} & \dotsb \\
+                        \frac{0}{4} & \frac{1}{4} & \frac{-1}{4} & \frac{2}{4} & \frac{-2}{4} & \frac{3}{4} & \frac{-3}{4} & \frac{4}{4} & \frac{-4}{4} & \dotsb \\
+                        \frac{0}{5} & \frac{1}{5} & \frac{-1}{5} & \frac{2}{5} & \frac{-2}{5} & \frac{3}{5} & \frac{-3}{5} & \frac{4}{5} & \frac{-4}{5} & \dotsb \\
+                        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\
+                    \end{matrix}
+                \end{center}
+            }
         }
         \only<5-9>{
             \begin{alertblock}{\only<9->{Առաջին տարբերակ}}
@@ -367,7 +367,7 @@
             \item<22->{գումարումը ու կարգավորվածությանը\\}
             \only<23->{$\forall a, b, c \in \mathbb{R}$ եթե $a \leq b$ ապա $a + c \leq b + c$}
             \item<24->{արտադրյալը ու կարգավորվածությանը\\}
-            \only<25->{$\forall a, b, c \in \mathbb{R}$ եթե $a \leq b$ և $c \geq b$ ապա $a \cdot c \leq b \cdot c$}
+            \only<25->{$\forall a, b, c \in \mathbb{R}$ եթե $a \leq b$ և $c \geq 0$ ապա $a \cdot c \leq b \cdot c$}
         \end{itemize}}
         \end{exampleblock}
         }
@@ -480,10 +480,10 @@
                     Եթե $S$-ը $A$ բազմության ճշգրիտ վերին եզրն է, ապա՝
                     \only<8->{\begin{itemize}
                         \only<8->{\item{$S$-ը վերին եզր է $A$ բազմության համար\\}}
-                        \only<9->{$\forall a \in A \leq S$}
+                        \only<9->{$\forall a \in A \; a \leq S$}
                         \only<10->{\item{\alert<13>{$S$-ից փոքր կամայական թիվ} $A$ բազմության համար վերին եզր չէ\\}}
-                        \only<11>{$\forall s < S\;  \exists a_s  \in A\; a > s$}
-                        \only<12>{$\forall s < S\;  \exists a_s  \in A\; a > s = S - \varepsilon$}
+                        \only<11>{$\forall s < S\;  \exists a_s  \in A\; a_s > s$}
+                        \only<12>{$\forall s < S\;  \exists a_s  \in A\; a_s > s = S - \varepsilon$}
                         \only<13->{$\alert<13>{\forall \varepsilon > 0}\;  \exists a_s  \in A\; a > \alert<13>{S - \varepsilon}$}
                     \end{itemize}}
                 }
@@ -510,7 +510,7 @@
                     $A = \{x\in \mathbb{R}:\; -1 < x < \pi\} =: (-1, \pi)$\\
                     \only<23>{$B = \{x \in \mathbb{R}:\; x \text{-ը վերևից սահմանափակում է } A \text{ բազմությունը}\}$}
                     \only<24>{$B = \{x \in \mathbb{R}: \; x\geq\pi\}$}
-                    \only<25>{$B = [\pi, +\infty) =: [\pi, +\infty) $}
+                    \only<25>{$B = \{x \in \mathbb{R}: \; x\geq\pi\} =: [\pi, +\infty) $}
                 \end{exampleblock}
             }
         }
@@ -590,7 +590,7 @@
         }
         \only<13->{
             \begin{block}{Պնդում}
-                Իրական թվերի բազմությունը \alert<14>{անհաշվելի է}։ Կամայական $f: \mathbb{R} \rightarrow \mathbb{N}$ արտապատկերման համար կգտնվի այպիսի \alert<14>{$\xi \in \mathbb{R}$, որ $f(x) = \xi$ լուծում չունի}։
+                Իրական թվերի բազմությունը \alert<14>{անհաշվելի է}։ Կամայական $f: \mathbb{N} \rightarrow \mathbb{R}$ արտապատկերման համար կգտնվի այպիսի \alert<14>{$\xi \in \mathbb{R}$, որ $f(n) = \xi$ լուծում չունի}։
             \end{block}
         }
         \only<14>{\includegraphics[width=0.95\textwidth]{5b49576b/nested_intervals_special_1.png}}

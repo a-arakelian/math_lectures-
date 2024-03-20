@@ -28,6 +28,9 @@
 \usepackage{graphicx}
 \usepackage{tikz} 
 
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
 
 \begin{document}
 
@@ -38,36 +41,30 @@
 % \begin{tcolorbox}[width=\textwidth, colback={white}, colframe=orange]
 %    graphicx և tikz փաթեթները հնարավորություն են տալիս ստեղծել շատ տարբեր հավես պատկերներ և գծագրեր, ստորև նայենք օրինակներ։
 % \end{tcolorbox}
-Դաս $1$\\
-\vspace{2cm}
-
-
+Դաս $2$\\
+\vspace{1cm}
+\\
+$A$ բազմության ճշգրիտ վերին եզրը $\sup A$-ով ենք նշանակում և անվանում ենք «սուպրեմում», իսկ $\inf A$-ով՝ ճշգրիտ ստորին եզրը, որն անվանում ենք «ինֆիմում»։\\
+\vspace{1cm}
 \begin{enumerate}
-    \item Դիցուք Հայկը իր $50000$ դրամը ներդրել է ավանդ տարեկան $10\%$ տոկոսադրույքով։
-    \begin{itemize}
-        \item Քանի՞ տարի հետո Հայկի գումարը կգերազանցի $100000$ դրամը։\\
-        \item Քանի՞ տարի հետո Հայկի գումարը կգերազանցի $200000$ դրամը:
-    \end{itemize}
-    \item Հետազոտել հետևյալ հաջորդականությունները և բազմություները սահմանափակության համար։
-    \begin{itemize}
-        \item $\left(\frac{n^3}{2-n^2}\right)$,\\
-        \item $\left(\frac{n^3}{2-n^2} - n\right)$,\\
-        \item $\left(\frac{1}{n \sin{n}}\right)$,\\
-        \item $(a_n)$, որտեղ $a_n = \left(1+\frac{1}{n}\right)^n$,\\
-        \item $f((0, 10))$, որտեղ $f: \mathbb{R} \setminus \{0\} \rightarrow \mathbb{R}$, $f(x) = \frac{1}{x}$\\
-        \item $(a_n)$, որտեղ $a_n = \sum_{k=1}^n\frac{1}{4k^2 + 1}$,\\
-        \item $(a_n)$, որտեղ $a_n = \sum_{k=1}^n\frac{1}{k} - \ln{n}$ \textcolor{gray}{[օգտագերծիր մաթեմատիկական ինդուկցիայի մեթոդը]}\\
-        \item $(\sqrt[n]{n!})$,\\
-        \item պարզ թվերի բազմությունը:
-    \end{itemize}
-    \item Հետազոտել հետևյալ հաջորդականությունները ֆունդամենտալության համար։
-    \begin{itemize}
-        \item $\left(n\right)$,\\
-        \item $\left(\frac{1}{n}\right)$,\\
-        \item դիցուք $(a_n)$ հաջորդականությունը այնպիսին է, որ
-        \[\forall \varepsilon > 0 \; \exists N_\varepsilon \in \mathbb{N}: \; \forall n > N_\varepsilon \; |a_n| < \varepsilon:\]
-        \item $\left(\sqrt[n]{n}\right)$:
-    \end{itemize}
+    \item Նշված պնդումներից, որն է ճշմարիտ, պատասխանը հիմանվորել։
+    \begin{enumerate}
+        \item $\exists a, b \in \mathbb{Q}: \; a + b \in \mathbb{I} = \mathbb{R} \setminus \mathbb{Q} = \{x \in \mathbb{R}: \; x \notin \mathbb{Q}\}$,
+        \item $\exists a, b \in \mathbb{I}: \; a + b \in \mathbb{Q}$,
+        \item $\forall a, b \in \mathbb{I}: \; a + b \notin \mathbb{N}$,
+        \item $\forall a, b \in \mathbb{I}: \; a + b \in \mathbb{N}$,
+    \end{enumerate}
+    \item Դիցուք՝ $f(x) = \sin x$։ Պատկերել հետևյալ ֆունկցիաների գրաֆիկները $x \geq 0$ բազմության վրա, և հիմնավորել արդյունքը․
+    \begin{enumerate}
+        \item $g(x) = \sup f^{-1}([0, x)) + \inf f^{-1}([0, x))$,
+        \item $g(x) = \sup f^{-1}([0, x)) \cdot \inf f^{-1}([0, x))$,
+        \item $g(x) = \sup f^{-1}([0, x)) \cdot \inf f^{-1}((-x, 0])$։
+    \end{enumerate}
+    \item Հիմանավորել հետևյալ պնդումները։
+    \begin{enumerate}
+        \item Կան ներդրված ինտերվալներ, որ չունեն ընդհանուր կետ,
+        \item Ռացիոնալ թվերը հաշվելի են։
+    \end{enumerate}
 \end{enumerate}
 
 \end{document}

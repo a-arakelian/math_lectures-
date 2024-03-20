@@ -66,16 +66,16 @@
      \section{դաս 1}
 %     %%%%%%%       մոտիվացիա       %%%%%%%
     \subsection{մոտիվացիա}
-    \begin{frame}
-        \frametitle{Ինչու՞ մաթեմատիկական անալիզ}
-        % TODO
-        \centering{Շուտով․․․}
-    \end{frame}
-    \begin{frame}
-        \frametitle{Դասընթացի կառուցվածքը}
-        % TODO
-        \centering{Շուտով․․․}
-    \end{frame}
+    % \begin{frame}
+    %     \frametitle{Ինչու՞ մաթեմատիկական անալիզ}
+    %     % TODO
+    %     \centering{Շուտով․․․}
+    % \end{frame}
+    % \begin{frame}
+    %     \frametitle{Դասընթացի կառուցվածքը}
+    %     % TODO
+    %     \centering{Շուտով․․․}
+    % \end{frame}
     %%%%%%%   բովանդականություն   %%%%%%%
     \begin{frame}
     \frametitle{Բովանդականություն}
@@ -230,7 +230,7 @@
                 }
                 \only<6->{
                     \item Բնական թվերից կազմված \textcolor<8-9>{red}{կամայական}  բազմություն, այսինքն՝ \textcolor<9>{red}{բնական թվերի ենթաբազմությունը} \textcolor<10>{red}{ունի} \textcolor<11>{red}{ամենափոքր թիվը}.
-                    \only<7->{\\ $\textcolor<8-9>{red}{\forall} \textcolor<9>{red}{A \subset \mathbb{N}} \; \textcolor<10>{red}{\exists n \in \mathbb{N}} \; \textcolor<11>{red}{\forall m \in A \; n \le m}$}
+                    \only<7->{\\ $\textcolor<8-9>{red}{\forall} \textcolor<9>{red}{A \subset \mathbb{N}} \; \textcolor<10>{red}{\exists n \in A} \; \textcolor<11>{red}{\forall m \in A \; n \le m}$}
                 }
             \end{itemize}
         \end{block}}
@@ -389,19 +389,23 @@
         \only<2->{
             \begin{alertblock}{Ապացույց}
                 \only<2-> {Ունենք, որ}
-                \only<3-> {կամայական տրված $\varepsilon$ դրական թվի համար, սկսած ինչ֊որ պահից {$|a_n - a_m| < \varepsilon$} և {$|b_n - b_m| < \varepsilon$}։\\}
+                \only<3-> {կամայական տրված $\varepsilon$ դրական թվի համար, սկսած ինչ֊որ պահից \alert<12>{$|a_n - a_m| < \varepsilon$} և \alert<12>{$|b_n - b_m| < \varepsilon$}։\\}
                 \only<4-> {Նայև ունենք, որ ինչ֊որ պահից \textcolor<8>{red}{$|b_n| > \delta > 0$}:\\}
                 \only<5-> {Պետք է գնահատաենք $|c_n - c_m|$֊ը։\\}
                 \only<6> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right|$}
                 \only<7> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right|$}
                 \only<8> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \textcolor{red}{\frac{1}{\delta^2}}|a_n b_m - a_m b_n|$}
-                \only<9> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n b_m - a_m b_n + \underbrace{(a_nb_n - a_mb_m)}_{=0}|$}
-                \only<10> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n b_m - a_mb_m + a_nb_n - a_m b_n|$}
-                \only<11> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|(a_n - a_m)b_m + (a_n - a_m) b_n|$}
-                \only<12> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|(a_n - a_m)(b_m + b_n)|$}
-                \only<13> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\textcolor<13>{red}{\in (-\varepsilon, \varepsilon)}}(b_m + b_n)|$}
-                \only<14> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\textcolor<13>{red}{\in (-\varepsilon, \varepsilon)}}\underbrace{(b_m + b_n)}_{\textcolor<14>{red}{\leq 2M  \text{ $(b_n)$-ը սհամանափակ է}}}|$}
-                \only<15> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\textcolor<13>{red}{\in (-\varepsilon, \varepsilon)}}\underbrace{(b_m + b_n)}_{\textcolor<14>{red}{\leq 2M}}| \le \frac{2M}{\delta^2} \varepsilon$}
+                \only<9> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n b_m - a_m b_n + \underbrace{(a_nb_n - a_nb_n)}_{=0}|$}
+                \only<10> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n b_m \underbrace{- a_nb_n + a_nb_n}_{=0} - a_m b_n|$}
+                \only<11> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n(b_m - b_n) + b_n(a_n - a_m)|$}
+                \only<12> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n\alert{\underbrace{(b_m - b_n)}_{\in (-\varepsilon, \varepsilon)}} + b_n\alert{\underbrace{(a_n - a_m)}_{\in (-\varepsilon, \varepsilon)}}|$}
+                \only<13> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\alert{\underbrace{a_n}_{\in [-M, M]}}(b_m - b_n) + \alert{\underbrace{b_n}_{\in [-M, M]}}(a_n - a_m)|$}
+                \only<14> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|a_n(b_m - b_n) + b_n(a_n - a_m)| \le \frac{2M}{\delta^2} \varepsilon $}
+                
+                % \only<13> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\in (-\varepsilon, \varepsilon)}(b_m + b_n)  - a_n(b_n - b_m)(b_n - b_m)|$}
+                % \only<13> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\textcolor<13>{red}{\in (-\varepsilon, \varepsilon)}}(b_m + b_n)|$}
+                % \only<14> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\textcolor<13>{red}{\in (-\varepsilon, \varepsilon)}}\underbrace{(b_m + b_n)}_{\textcolor<14>{red}{\leq 2M  \text{ $(b_n)$-ը սհամանափակ է}}}|$}
+                % \only<15> {$|c_n - c_m| = \left|\frac{a_n}{b_n} - \frac{a_m}{b_m}\right| = \left|\frac{a_n b_m - a_m b_n}{b_n b_m}\right| < \frac{1}{\delta^2}|\underbrace{(a_n - a_m)}_{\textcolor<13>{red}{\in (-\varepsilon, \varepsilon)}}\underbrace{(b_m + b_n)}_{\textcolor<14>{red}{\leq 2M}}| \le \frac{2M}{\delta^2} \varepsilon$}
             \end{alertblock}
         }
    \end{frame}
