@@ -67,16 +67,24 @@
 	% \maketitle
     \end{frame}
 %%%%% Նախորդ դասին %%%%%
-    \begin{frame}
-        \frametitle{Նախորդ դասերին}
-        \centering
-        Շուտով․․․
-    \end{frame}
+    % \begin{frame}
+    %     \frametitle{Նախորդ դասերին}
+    %     \centering
+    %     Շուտով․․․
+    % \end{frame}
 %%%%% Բովանդականություն %%%%%
     \begin{frame}
         \frametitle{Բովանդականություն}
-        \centering
-        Շուտով․․․
+        \begin{block}{}
+            Զուգամետ հաջորդականություն
+        \end{block}
+        \begin{block}{}
+            Ենթահաջորդականություն
+        \end{block}
+        \begin{block}{}
+            Ֆունդամենտալ հաջորդականության զուգամիտությունը
+        \end{block}
+
     \end{frame}
 %%%%% 1 %%%%%
     \begin{frame}
@@ -101,7 +109,7 @@
             \only<12>{\centering \includegraphics[width=0.42\textwidth]{5b49576b/convergent_sequence_4.png}}
             \only<13>{\centering \includegraphics[width=0.42\textwidth]{5b49576b/convergent_sequence_5.png}}
         }
-        \only<14-41>{
+        \only<14-41, 55->{
             \begin{exampleblock}{Օրինակ}
                { $a_n = \sqrt[n]{n}$} հաջորդականության սահմանը $1$ է։
             \end{exampleblock}
@@ -109,10 +117,10 @@
         \only<42-48>{
             \begin{exampleblock}{}
                 $n!$ $n$ էլեմենտների տեղափոխության քանակն է։\\
-                $4$ տարբեր խաղաքարտերը $4$ հոգուն կարելի է բաժանել $16$ եղանակով։
+                $4$ տարբեր խաղաքարտերը $4$ հոգուն կարելի է բաժանել $24$ եղանակով։
             \end{exampleblock}
         }
-        \only<15-27>{
+        \only<15-27, 55->{
             \begin{alertblock}{Ապացույց}
                 \only<15->{Պետք է ցույց տալ, որ սկսած ինչ֊որ պահից $|\sqrt[n]{n} - 1| < \varepsilon$։}
                 \only<16>{\[|\sqrt[n]{n} - 1| < \varepsilon \Leftrightarrow - \varepsilon < \sqrt[n]{n} - 1 < \varepsilon\]}
@@ -122,7 +130,34 @@
                 \only<20-21>{Եթե \alert<21>{$x<1$}, ապա $x^n = \alert<21>{x} \cdot x^{n-1} \alert<21>{< 1}\cdot x^{n-1}$:\\}
                 \only<22>{Եթե $x<1$, ապա $x^n  < x^{n-1} < x^{n-2}< \cdots < x^{1} < 1$:\\}
                 \only<25->{$\sqrt[n]{n} < 1 + \varepsilon$, այն և միայն այն դեպքում, երբ $\alert<26>{n} < (1+\varepsilon)^{\alert<26>{n}}$:\\}
-                \only<27>{\[n < (1+\varepsilon)^n =?\]}
+                \only<27, 55>{\[n < (1+\varepsilon)^n =\alert<55>{?}\]}
+                \only<56>{\[n < (1+\varepsilon)^n =\sum_{i= 0}^n \frac{n!}{i!(n-i)!} 1^i \varepsilon^{n-i}\]}
+                \only<57>{\[n < (1+\varepsilon)^n = \frac{n!}{0! n!} 1^n \varepsilon^0 + \frac{n!}{ 1! (n-1)!} 1^{n-1} \varepsilon^1 + \frac{n!}{ 2! (n-2)!} 1^{n-2} \varepsilon^2  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<58>{\[n < (1+\varepsilon)^n = \alert{\frac{n!}{0! n!} 1^n \varepsilon^0} + \frac{n!}{ 1! (n-1)!} 1^{n-1} \varepsilon^1 + \frac{n!}{ 2! (n-2)!} 1^{n-2} \varepsilon^2  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<59>{\[n < (1+\varepsilon)^n = \alert{1} + \frac{n!}{ 1! (n-1)!} 1^{n-1} \varepsilon^1 + \frac{n!}{ 2! (n-2)!} 1^{n-2} \varepsilon^2  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<60>{\[n < (1+\varepsilon)^n = 1 + \alert{\frac{n!}{ 1! (n-1)!} 1^{n-1} \varepsilon^1} + \frac{n!}{ 2! (n-2)!} 1^{n-2} \varepsilon^2  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<61>{\[n < (1+\varepsilon)^n = 1 + \alert{n\varepsilon} + \frac{n!}{ 2! (n-2)!} 1^{n-2} \varepsilon^2  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<62>{\[n < (1+\varepsilon)^n = 1 + n\varepsilon + \alert{\frac{n!}{ 2! (n-2)!} 1^{n-2} \varepsilon^2}  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<63>{\[n < (1+\varepsilon)^n = 1 + n\varepsilon + \alert{\frac{(n-1)n}{2}\varepsilon^2}  + ... + \frac{n!}{n! 0!} 1^0 \varepsilon^n\]}
+                \only<64>{\[n < (1+\varepsilon)^n = 1 + n\varepsilon + \frac{(n-1)n}{2}\varepsilon^2  + ... + \alert{\frac{n!}{n! 0!} 1^0 \varepsilon^n}\]}
+                \only<65>{\[n < (1+\varepsilon)^n = 1 + n\varepsilon + \frac{(n-1)n}{2}\varepsilon^2  + ... + \alert{\varepsilon^n}\]}
+                \only<66>{\[n < (1+\varepsilon)^n = 1 + n\varepsilon + \frac{(n-1)n}{2}\varepsilon^2  \underbrace{+ ... + \varepsilon^n}_{\text{դրական է}}\]}
+                \only<67>{\[n < \alert{1 + n\varepsilon + \frac{(n-1)n}{2}\varepsilon^2} < \alert{1 + n\varepsilon + \frac{(n-1)n}{2}\varepsilon^2}  \underbrace{+ ... + \varepsilon^n}_{\text{դրական է}} = (1+\varepsilon)^n\]}
+                \only<68>{\[n \underbrace{\alert{<}}_{\alert{?}} 1 + n\varepsilon + \frac{(n-1)n}{2}\varepsilon^2  < (1+\varepsilon)^n\]}
+                \only<69>{\[2n \underbrace{\alert{<}}_{\alert{?}} 2 + 2n\varepsilon + (n-1)n\varepsilon^2\]}
+                \only<70>{\[2n \underbrace{\alert{<}}_{\alert{?}} 2 + 2n\varepsilon + n^2\varepsilon^2-n\varepsilon^2\]}
+                \only<71>{\[0 \underbrace{\alert{<}}_{\alert{?}} 2 + 2n\varepsilon + n^2\varepsilon^2-n\varepsilon^2 - 2n\]}
+                \only<72>{\[0 \underbrace{\alert{<}}_{\alert{?}} n^2\varepsilon^2 + (2\varepsilon - \varepsilon^2 - 2)n + 2\]}
+                \only<73>{\[0 \underbrace{\alert{<}}_{\alert{?}} n^2 + \frac{(2\varepsilon - \varepsilon^2 - 2)}{\varepsilon^2}n + \frac{2}{\varepsilon^2}\]}
+                \only<74>{\[0 \underbrace{\alert{<}}_{\alert{?}} n^2 + \frac{(2\varepsilon - \varepsilon^2 - 2)}{\varepsilon^2}n + \underbrace{\frac{2}{\varepsilon^2}}_{\text{դրական է}}\]}
+                \only<75>{\[0 \underbrace{\alert{<}}_{\alert{?}} n^2 + \frac{(2\varepsilon - \varepsilon^2 - 2)}{\varepsilon^2}n\]}
+                \only<76>{\[0 \underbrace{\alert{<}}_{\alert{?}} n + \frac{(2\varepsilon - \varepsilon^2 - 2)}{\varepsilon^2}\]}
+                \only<77>{\[-\frac{2\varepsilon - \varepsilon^2 - 2}{\varepsilon^2} \underbrace{\alert{<}}_{\alert{?}} n\]}
+                \only<78>{\[\frac{2 + \varepsilon^2 - 2\varepsilon}{\varepsilon^2} < n\]}
+
+
+            
+            
             \end{alertblock}
         }
         \only<28-39>{
@@ -151,7 +186,7 @@
 
             \end{exampleblock}
         }
-        \only<40->{
+        \only<40-54>{
             \only<-41, 49->{\begin{exampleblock}{$n$ հատից $i$ հատը ընտրել}
                 \only<40->{$n$ հատ էլեմենտներից $i$ հատը ընտրելու եղանակների քանանակը հավասար է}
                 \only<41>{\[\frac{n!}{i!(n-i)!},\] որտեղ $n! = 1 \cdot 2 \cdot 3 \cdots n$։}
@@ -202,6 +237,127 @@
             \only<7>{\centering \includegraphics[width=0.42\textwidth]{5b49576b/convergent_cauchy_3.png}}
             \only<8>{\centering \includegraphics[width=0.42\textwidth]{5b49576b/convergent_cauchy_4.png}}
             \only<9>{\centering \includegraphics[width=0.42\textwidth]{5b49576b/convergent_cauchy_5.png}}
+        }
+    \end{frame}
+    \begin{frame}
+        \frametitle{Ենթահաջորդականություն}
+        \framesubtitle{Մասնակի սահաման}
+        \only<1-7>{\begin{block}{Սահմանում}
+            $(a_n)$ հաջորդականության \alert<1>{ենթահաջորդականությու} է կոչվում $b_n = a_{k_n}$ հաջորդականությունը, որտեղ $k :\mathbb{N} \rightarrow \mathbb{N}$ խիստ աճող հաջորդականություն է, այսինքն.
+            \[n > m \Rightarrow k_n > k_m\]
+        \end{block}}
+        \only<2-10>{\begin{exampleblock}{Օրինակ}
+            \only<2>{$a_n = (-1)^n\frac{2 + n}{n}$}
+            \only<3>{$a_n = (-1)^n\frac{2 + n}{n}$, $k_n = 2n$}
+            \only<4>{$a_n = (-1)^n\frac{2 + n}{n}$, $k_n = 2n$,  $b_n = a_{k_n} = (-1)^{k_n} \frac{2+k_n}{k_n}$}
+            \only<5>{$a_n = (-1)^n\frac{2 + n}{n}$, $k_n = 2n$,  $b_n = a_{k_n} = (-1)^{2n} \frac{2+2n}{2n}$}
+            \only<6>{$a_n = (-1)^n\frac{2 + n}{n}$, $k_n = 2n$,  $b_n = a_{2n} = \frac{2+2n}{2n}$}
+            \only<7-10>{$a_n = (-1)^n\frac{2 + n}{n}$, $k_n = 2n$,  $b_n = a_{2n} = \frac{1+n}{n}$}
+        \end{exampleblock}
+        \only<8>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/sub_seqaunce_0.png}}
+        \only<9>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/sub_seqaunce_1.png}}
+        \only<10>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/sub_seqaunce_2.png}}
+        }
+        \only<11->{
+            \begin{block}{\only<11>{Սահմանում}}
+                $(a_n)$ հաջորդականության \alert{մասնակի սահման} է կոչվում զուգամետ Ենթահաջորդականություն հաջորդականության սահմանը։
+            \end{block}
+            \begin{exampleblock}{}
+                \[a_n = (-1)^n\frac{2 + n}{n}\]
+            \end{exampleblock}
+            \only<12>{\centering \includegraphics[width=0.37\textwidth]{5b49576b/sub_seqaunce_3.png}}
+        }
+    \end{frame}
+    \begin{frame}
+        \frametitle{Մասնակի սահման}
+        \only<1->{\begin{block}{Պնդում}
+            Կամայական սհմանափակ հաջորդականություն ունի մասնակի սահման։
+        \end{block}
+        }
+        \only<2, 4, 6, 8-11, 13-14, 24->{
+            \begin{alertblock}{Ապացույց}
+                \only<2-11>{Դիցուք՝ $(a_n)$ Հաջերդականությունը սահմանափակ է, այսինքն $\exists x_0, y_0 \in \mathbb{R}: \; \forall n \in \mathbb{N} \; x_0 \leq a_n \leq y_0$:\\}
+                \only<4-11>{Այսինքն $a^{-1}([x_0, y_0]) : = \{n \in \mathbb{N}:\;  x_0 \leq a_n \leq y_0\} = \mathbb{N}$:\\}
+                \only<6, 8-11>{Դիտարկենք $a^{-1}([x_0, \frac{x_0+y_0}{2}])$ և $a^{-1}([\frac{x_0+y_0}{2}, y_0])$ բնական թվերի ենթաբազմությունները:\\}
+                \only<8>{\[a^{-1}\left(\left[x_0, \frac{x_0+y_0}{2}\right]\right) \cup a^{-1}\left(\left[\frac{x_0+y_0}{2}, y_0\right]\right) = \mathbb{N}\]}
+                \only<9>{նշված նախապատկերներից առնվազն մեկը անվերջ է։}
+                \only<10, 11>{\[
+                    [x_1, y_1] =
+                    \begin{cases}
+                    [\frac{x_0+y_0}{2}, y_0], & \text{եթե  $a^{-1}([x_0, \frac{x_0+y_0}{2}])$ անվերջ է,} \\
+                    [x_0, \frac{x_0+y_0}{2}], & \text{հակառակ դեպքում։}
+                    \end{cases}
+                    \]}
+                \only<11>{
+                    $k_1 := \min\{a^{-1}([x_1, y_1])\}$
+                }
+                \only<13-14>{\[
+                    [x_2, y_2] =
+                    \begin{cases}
+                    [\frac{x_1+y_1}{2}, y_1], & \text{եթե  $a^{-1}([x_1, \frac{x_1+y_1}{2}])$ անվերջ է,} \\
+                    [x_1, \frac{x_1+y_1}{2}], & \text{հակառակ դեպքում։}
+                    \end{cases}
+                    \]}
+                \only<14>{
+                    $k_2 := \min\{a^{-1}([x_2, y_2]) \alert{\cap \{k_1 + 1, k_1 + 2, k_1 + 3, ...\}}\}$
+                }
+                \only<24->{\[
+                    [x_{n+1}, y_{n+1}] =
+                    \begin{cases}
+                    [\frac{x_n+y_n}{2}, y_1], & \text{եթե  $a^{-1}([x_n, \frac{x_n+y_n}{2}])$ անվերջ է,} \\
+                    [x_n, \frac{x_n+y_n}{2}], & \text{հակառակ դեպքում։}
+                    \end{cases}
+                    \]}
+                \only<25->{
+                    $k_{n+1} := \min\{a^{-1}([x_{n+2}, y_{n+2}]) \cap \{k_n + 1, k_n + 2, k_n + 3, ...\}\}$
+                }
+                \only<26->{$[x_1, y_1] \supset [x_2, y_2] \supset \cdots \supset [x_n, y_n] \supset \cdots$ ներդրված հատվածներ են:\\}
+                \only<27-28, 31>{$\exists \only<28->{\alert<28-31>{!}} \xi \in \mathbb{R}$ այնպիսի որ $\forall n \; \xi \in [x_n, y_n]$\\}
+                \only<29-30>{Եթե $\exists \xi_1 \neq \xi_2 \in \mathbb{R}$ այնպիսի որ $\forall n \; \xi_1, \xi_2 \in [x_n, y_n]$, ապա}
+                \only<30>{\[\forall n \in  \mathbb{N} \; y_n - x_n = \frac{y_0 - x_0}{2^n} \geq |\xi_1 - \xi_2| \]}
+                \only<31->{$\xi$-ն $a_{k_n}$ ենթահաջորդականության սահմանն է․}
+                \only<32>{\[\forall \varepsilon > 0 \; \exists N_\varepsilon \; \forall n > N_\varepsilon \; |a_{k_n} - \xi| < \varepsilon\]}
+                \only<33>{\[|a_{k_n} - \xi| < \frac{y_0 - x_0}{2^n} < \varepsilon\]}
+            \end{alertblock}
+        }
+        \only<3>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_0.png}}
+        \only<5>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_1.png}}
+        \only<7>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_c_1.png}}
+        \only<12>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_2.png}}
+        \only<15>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_c_2.png}}
+        \only<16>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_3.png}}
+        \only<17>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_c_3.png}}
+        \only<18>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_4.png}}
+        \only<19>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_c_4.png}}
+        \only<20>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_5.png}}
+        \only<21>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_c_5.png}}
+        \only<22>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_6.png}}
+        \only<23>{\centering \includegraphics[width=0.47\textwidth]{5b49576b/subsequence_converges_c_6.png}}
+    \end{frame}
+    \begin{frame}
+        \frametitle{Ֆունդամենտալ հաջորդականություն}
+        \framesubtitle{Զուգամիտությունը}
+        \only<1->{
+            \begin{block}{Պնդում}
+                Ֆունդամենտալ հաջորդականությունը զուգամետ է։
+            \end{block}
+        }
+        \only<2->{
+            \begin{alertblock}{Ապացույց}
+               \only<-6>{Ապացույցը հետևյալ երեք քալերից է ձևավորվում․
+                \begin{itemize}
+                    \item<3->{ֆունդամենտալ հաջորդականությունը սահմանափակ է,}
+                    \item<4->{սահմանափակ հաջորդականությունը ունի մասնակի սահաման,}
+                    \item<5->{\alert<6>{ֆունդամենտալ հաջորդականության մասնակի սահմանը հանդիսանում է սահման։}}
+                \end{itemize}}
+                \only<7-11>{\[\forall \varepsilon > 0 \; \exists \alert<10>{N_\varepsilon} \in \mathbb{N} \; \forall n > N_\varepsilon \; |\xi - a_{k_n}| < \varepsilon\]}
+                \only<8->{\[\forall \varepsilon > 0,  \;  \forall \alert<10>{N} \in \mathbb{N} \; \alert<9-10>{\exists n_0} > N \; |\xi - a_n| < \varepsilon\]}
+                \only<11>{\[n_0 = k_{N + N_\varepsilon} \geq N + N_\varepsilon\]}
+                \only<12->{\[\forall \varepsilon > 0 \; \exists N_\varepsilon \in \mathbb{N} \; \forall n, m > N_\varepsilon \; |a_n - a_m| < \varepsilon\]}
+                \only<13->{\[|\xi \alert<13>{- a_{n_0} + a_{n_0}} - a_n| < |\xi - a_{n_0}|+|a_{n_0} - a_m| < \varepsilon + \varepsilon\]}
+
+
+            \end{alertblock}
         }
     \end{frame}
 \end{document}

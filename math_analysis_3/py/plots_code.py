@@ -327,12 +327,89 @@ def permute_l_from_n_number(n, l):
         s *= i
     return s
 
+def sub_function(n):
+    s = 1 if n % 2 == 0 else -1
+    return s * (2 + n) / n
 
 
+def sub_sequance():
+    x = np.arange(1, 70)
+    y = np.array([sub_function(n) for n in x])
+    xf = x[x % 2 == 0]
+    yf = y[x % 2 == 0]
+    y_sub = np.array([sub_function(2*n) for n in x])
+    _, axs = plt.subplots()
+    axs.plot(x, y, 'o', color='b', alpha=0.5, markersize=3, label='$(a_n)$')
+    axs.legend(fontsize=12)
+    save_plot('sub_seqaunce_0')
+    f, = axs.plot(xf, yf, 'o', color='gray', alpha=0.3, markersize=9)
+    save_plot('sub_seqaunce_1')
+    s, = axs.plot(x, y_sub, 'o', color='r', alpha=0.5, markersize=3, label='$b_n = a_{2n}$')
+    p = axs.legend(fontsize=12)
+    save_plot('sub_seqaunce_2')
+    f.remove()
+    s.remove()
+    p.remove()
+    axs.axhline(1, color='black', linewidth=1.5)
+    axs.axhline(-1, color='black', linewidth=1.5)
+    save_plot('sub_seqaunce_3')
 
 
-# convergent_sequence()
-# convergent_cauchy()
+def subsequence_converges(n=4):
+    N = 70
+    x = np.arange(1, N+1)
+    y = np.random.rand(N)
+    _, axs = plt.subplots()
+    axs.set_ylim(-0.05, 1.05)
+    axs.plot(x, y, 'o', color='tan', alpha=0.95, markersize=3, label='$(a_n)$')
+    axs.legend(fontsize=12)
+    save_plot('subsequence_converges_0')
+    up_limit = 1
+    down_limit = 0
+    n_k = 0
+    x_lab = []
+    x_val = []
+    for i in range(1, n+1):
+        mid = (down_limit+up_limit)/2
+        sp = axs.axhspan(up_limit, down_limit, facecolor='silver', alpha=0.5, label='$[' + f'x_{i-1}, y_{i-1}' + ']$')
+        legend = axs.legend(fontsize=12)
+        if x_lab:
+            axs.set_xticks(x_val)
+            axs.set_xticklabels(x_lab, fontsize=12)
+            x__ = np.array(x_val)
+            y__ = np.array([y[i-1] for i in x_val])
+            plt.vlines(x__, 0, y__)
+        save_plot(f'subsequence_converges_{i}')
+        legend.remove()
+        sp.remove()
+        spu = axs.axhspan(up_limit, mid, facecolor='pink', alpha=0.5, label=r'$[\frac{' + f'x_{i-1} + y_{i-1}' + r'}{2}' + f'y_{i-1}' + ']$')
+        spd = axs.axhspan(mid, down_limit, facecolor='lightskyblue', alpha=0.5, label=r'$[' + f'x_{i-1}' +r'\frac{' + f'x_{i-1} + y_{i-1}' + r'}{2}]$')
+        legend = axs.legend(fontsize=12)
+        yfu = (y >= mid) & (y <= up_limit)
+        yfd = (y >= down_limit) & (y <= mid)
+        count_u = np.sum(yfu)
+        count_d = np.sum(yfd)
+        if count_d > count_u:
+            up_limit, down_limit = mid, down_limit
+            h = yfd
+        else:
+            up_limit, down_limit = up_limit, mid
+            h = yfu
+        save_plot(f'subsequence_converges_c_{i}')
+        try:
+            n_k = x[h][x[h] > n_k][0]
+        except IndexError:
+            break
+        x_lab.append('$k_' + f'{i}' + '$')
+        x_val.append(n_k)
+        spu.remove()
+        spd.remove()
+        legend.remove()
+
+        
+
+convergent_sequence()
+convergent_cauchy()
 d = {
     1: 'bo',
     2: 'g^',
@@ -340,8 +417,6 @@ d = {
     4: 'kp',
 }
 binomial_coefficient(4, d)
-plt.show()
-
-# a = PermuTree(4)
-# for i in range(6):
-#     print(a(i))
+sub_sequance()
+subsequence_converges(10)
+#plt.show()
