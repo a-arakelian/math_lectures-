@@ -1,0 +1,71 @@
+% %-նշանից հետո գրվածը մեկնաբանություններ են
+\documentclass{article}
+
+% լուսանցքի սահմանում
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1.2cm,bindingoffset=0cm]{geometry}
+
+% հայերեն տեքստի հետ աշխատելու համար
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+
+% լրացուցիչ աշխատանք մաթեմատիկայի հետ
+\usepackage{amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{icomma} % "խելացի" ստորակե, $0,2$ --- թիվ, $0, 2$ --- թվարկում
+\usepackage{mathrsfs} % Սիրուն տառատեսակ
+
+% հիպերհղում
+\usepackage[hidelinks, colorlinks=true,linkcolor=blue]{hyperref}
+
+% բանաձևերի (չ)համարակալում
+\mathtoolsset{showonlyrefs=true} % Ցույց տալ բանաձևների միայն այն համարները, որոնց տեքստում կա \eqref{} (հղում)
+
+% գույների և այլ գրաֆիկական ձևափոխությունների համար    
+\usepackage{xcolor}    
+\usepackage{blindtext}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz} 
+
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
+
+\begin{document}
+
+% \begin{tcolorbox}[width=\textwidth, colback={white}, colframe=teal]    
+% Շրջանակների մեջ կարելի է վերցնել tcolorbox կարգավորման միջոցով, իսկ xcolor փաթեթը թույլ է տալիս գույների լայն ընտրություն։
+% \end{tcolorbox}
+
+% \begin{tcolorbox}[width=\textwidth, colback={white}, colframe=orange]
+%    graphicx և tikz փաթեթները հնարավորություն են տալիս ստեղծել շատ տարբեր հավես պատկերներ և գծագրեր, ստորև նայենք օրինակներ։
+% \end{tcolorbox}
+Դաս $3$\\
+\vspace{2cm}
+\begin{enumerate}
+    \item Ցույց տալ որ․
+    \begin{enumerate}
+        \item $\sum_{i = 0}^n \frac{n!}{i!(n-i)!} = 2^n$,
+        \item $\sum_{i = 0}^{n} \frac{(2n+1)!}{i!(2n-i+1)!} = 2^{2n}$,
+        \item $\binom{n-1}{k-1} + \binom{n-1}{k} = \binom{n}{k}$,
+        \item $\binom{k}{k} + \binom{k+1}{k} + \cdots + \binom{n}{k} = \binom{n+1}{k+1}$:
+    \end{enumerate}
+    \item Հաշվել սահմաները (պատասխանը հիմանավորել)․
+    \begin{enumerate}
+        \item դիցուք՝ $\lim_{n\rightarrow \infty}a_n = \lim_{n\rightarrow \infty}c_n$ և $ a_n \leq b_n \leq c_n$, գտնել $\lim_{n\rightarrow \infty}b_n$
+        \item դիցուք՝ $a > 0$, $a^{\frac{1}{n}}$,
+        \item դիցուք՝ $\lim_{n\rightarrow \infty}a_n = \alpha$ և $\lim_{n\rightarrow \infty}b_n = \beta$, գտնել $c_n = a_nb_{n+1}$ սահմանը։
+        \item $a_n = \sum_{i=1}^n \frac{9}{10^i}$,
+        \item $a_n = \frac{n}{2^n}$,
+        \item $a_{n+1} = \frac{1+a_n}{2}$,
+        \item $a_{n+1} = \frac{31}{10} a_n (1- a_n)$:
+    \end{enumerate}
+    \item Հիմանավորել հետևյալ պնդումները։
+    \begin{enumerate}
+        \item Եթե սահմանափակ հաջորդականությունը ունի միայն մեկ մասնակի սահման, ապա այն զուգմետ է։
+        \item Կա հաջորդականություն, որ ունի միայն մեկ մասնակի սահման և զուգամետ չէ։
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
