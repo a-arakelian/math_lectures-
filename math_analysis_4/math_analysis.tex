@@ -162,6 +162,7 @@
                 \item սահմանը ըստ Կոշիի
                 \item ըստ Հայնեի $\Leftrightarrow$ ըստ Կոշիի
                 \item օրիանկ $\frac{\sin(x)}{x}$ սահմանը $0$ կետում
+                \item ֆունկցիա, որ սահման չունի $0$ կետում
             \end{itemize}
         \end{block}
     }
@@ -225,12 +226,96 @@
                 \only<36>{\[\alert<36>{N_\varepsilon = {N'}_{\delta_\varepsilon}} \; \forall n > N_\varepsilon\; |\alert<33>{b_n} - y| < \varepsilon\]}
                 \only<32->{Քանի որ $y$-ը սահմանն է $f$ ֆունկցիայի $x$ կետում, \[|\alert<33>{f(a_n)} - y| < \varepsilon \text{, երբ } \alert<34->{0<|a_n - x|<\delta_\varepsilon}\]}
             }
-            %%% Օրինակ
-            \only<37>{
-                \begin{exampleblock}
-                    \[\lim_{n \rightarrow \infty} \frac{sin(x)}{x} = 1\]
-                \end{exampleblock}
-            }
         \end{alertblock}}
+        %%% Օրինակ
+        \only<37->{
+            \begin{exampleblock}{Օրինակ}
+                %%% sin(x)/x
+                \only<37-63>{\[\lim_{x \rightarrow 0} \frac{\sin(x)}{x} = 1\]}
+                %%% sign(x) + x
+                \only<64->{\[
+                    f(x) =
+                    \begin{cases}
+                    x + 1, & \text{եթե } x \geq 0\\
+                    x - 1, & \text{հակառակ դեպքում։}
+                    \end{cases}
+                    \]}
+            \end{exampleblock}
+            \only<38-45>{\begin{columns}
+                \column{0.5\textwidth}
+                \only<38>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_0.png}}}
+                \only<39>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_1.png}}}
+                \only<40>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_2.png}}}
+                \only<41>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_3.png}}}
+                \only<42>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_4.png}}}
+                \only<43>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_5.png}}}
+                \only<44>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_6.png}}}
+                \only<45>{\centering{\includegraphics[width=0.65\textwidth]{unit_circle_7.png}}}
+                \column{0.5\textwidth}
+                \only<38->{$(A, B)$ հարթություն այն կետերը, որ $a^2 + b^2 = 1$\\}
+                \only<39->{աղեղի երկարությունը  $x$ է\\}
+                \only<40>{$\sin(x) = b$\\}
+                \only<41->{$(\cos(x), \sin(x)) = (a, b)$\\}
+                \only<42>{\[\frac{1}{2}\sin(x)\]}
+                \only<43-44>{\[\frac{1}{2}\sin(x) < \frac{1}{2}x\]}
+                \only<45>{\[\frac{1}{2}\sin(x) < \frac{1}{2}x < \frac{1}{2}\tan(x)\]}
+            \end{columns}}
+            \only<46>{\[\sin(x) < x < \frac{\sin(x)}{\cos(x)}\]}
+            \only<47>{\[\frac{1}{\sin(x)} > \frac{1}{x} > \frac{\cos(x)}{\sin(x)}\]}
+            \only<48>{\[1 > \frac{\sin(x)}{x} > \cos(x)\]}
+            \only<49>{\[-1 < -\frac{\sin(x)}{x} < -\cos(x)\]}
+            \only<50>{\[0 < 1 -\frac{\sin(x)}{x} < 1 -\cos(x)\]}
+            \only<51>{\begin{columns}
+                \column{0.5\textwidth}
+                \centering{\includegraphics[width=0.65\textwidth]{unit_circle_8.png}}
+                \column{0.5\textwidth}
+                \[0 < 1 -\frac{\sin(x)}{x} < 1 -\cos(x) < x\]
+            \end{columns}}
+            \only<52>{\[0 < 1 -\frac{\sin(x)}{x} < x\]}
+            \only<53>{\[\forall \varepsilon > 0\; \forall x \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) |x| < \varepsilon \; \left|\frac{\sin(x)}{x} - 1 \right| < \varepsilon\]}
+            \only<54>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_0.png}}
+            \only<55>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_e_1.png}}
+            \only<56>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_d_1.png}}
+            \only<57>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_i_1.png}}
+            \only<58>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_e_2.png}}
+            \only<59>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_d_2.png}}
+            \only<60>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_i_2.png}}
+            \only<61>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_e_3.png}}
+            \only<62>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_d_3.png}}
+            \only<63>{\centering\includegraphics[width=0.99\textwidth]{5b49576b/sinx_x_i_3.png}}
+            \only<64>{\centering\includegraphics[width=0.5\textwidth]{5b49576b/discontinuous_function_0.png}}
+            \only<65>{\centering\includegraphics[width=0.5\textwidth]{5b49576b/discontinuous_function_1.png}}
+            \only<66>{\centering\includegraphics[width=0.5\textwidth]{5b49576b/discontinuous_function_d_1.png}}
+            \only<67>{\centering\includegraphics[width=0.5\textwidth]{5b49576b/discontinuous_function_i_1.png}}
+            \only<68>{\centering\includegraphics[width=0.5\textwidth]{5b49576b/discontinuous_function_i_2.png}}
+            \only<69>{\centering\includegraphics[width=0.5\textwidth]{5b49576b/discontinuous_function_i_3.png}}
+        }
 \end{frame}
+%%%%% 2 %%%%%
+\begin{frame}
+    \frametitle{Անընդահտությունը կետում}
+    \only<1->{Դիցուք՝ $f: A \rightarrow \mathbb{R}$, իսկ \alert<4-5>{\alert<1>{$x_0 \in A$} բազմության կուտակման կետ է}։}
+    %%% բովանդականություն
+    \only<1>{
+        \begin{block}{}
+            \begin{itemize}
+                \item անընդհատություն
+            \end{itemize}
+        \end{block}
+    }
+    %%% անընդհատության սահմանում
+    \only<2->{
+    \begin{block}{Սահմանում \only<3-5>{ըստ Հայնեի}\only<6->{ըստ Կոշիի}}
+        $f$ ֆունկցիան կոչվում է \alert<2>{անընդհատ $x_0$ կետում}, եթե $\lim_{x \rightarrow x_0}f(x) = f(x_0)$։\\
+        %%% ըստ Հայնեի
+        \only<3-5>{Կա, այնպիսի $y$, որ ցանկացած $a: \mathbb{N} \rightarrow A \cap U_\delta(x_0)$ $x_0$-ին զուգամիտող հաջորդականության համար, $b_n = f(a_n)$ զուգամիտում է $y$-ի․
+        \only<4>{\[\lim_{n \rightarrow \infty}a_n = x_0 \Rightarrow \lim_{n \rightarrow \infty}f(a_n) = y\]}
+        \only<5>{\[a_n = x_0 \Rightarrow \lim_{n \rightarrow \infty}f(a_n) = f(x_0)\]}}
+        %%% ըստ Կոշիի
+        \only<11->{Կա, այնպիսի $y$, որ ցանկացած $U_\varepsilon(y)$ շրջակայքի համար կա այնպիսի $U_\delta(x_0)$ շրջակայք, որի պատկերը ընկած է $U_\varepsilon(y)$ շրջակայքում․
+        \only<12>{\[\forall U_\varepsilon(y) \; \exists \mathring{U}_\delta(x): \; f(\mathring{U}_\delta(x) \cap A) \subset U_\varepsilon(y)\]}
+        \only<13>{\[\forall U_\varepsilon(y) \; f(x_0) \in U_\varepsilon(y)\]}}
+    \end{block}}
+\end{frame}
+
 \end{document}
